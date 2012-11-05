@@ -1,4 +1,18 @@
-" Leader
+"----------------------------
+"--- REQUIRED FOR VUNDLE ----
+"----------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim'
+"---- END VUNDLE SECTION ----
+
+"----------------------------------------
+"---- BEGIN INITIAL THOUGHTBOT STUFF ----
+"----------------------------------------
 let mapleader = " "
 
 set nocompatible  " Use Vim settings, rather then Vi settings
@@ -52,8 +66,7 @@ if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor
 endif
 
-" Color scheme
-colorscheme github
+" Color scheme 'colorscheme ____'
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -81,13 +94,13 @@ autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=rou
 " :Cuc my text (no quotes) -> runs cucumber scenarios containing "my text"
 command! -nargs=+ Cuc :!ack --no-heading --no-break <q-args> | cut -d':' -f1,2 | xargs bundle exec cucumber --no-color
 
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+"---- END INITIAL THOUGHTBOT STUFF ----
+
+"------------------------------------
+"--- MY CUSTOMIZATIONS---------------
+"------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
